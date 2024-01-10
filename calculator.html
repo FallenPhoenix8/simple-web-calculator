@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="thefallenphoenix8 (on Discord)">
+  <title>Calculator</title>
+
+  <style>
+    .result-field{
+      height: 30px;
+      min-width: 130px;
+      width: max-content;
+      font-size: larger;
+      border: solid silver;
+      border-radius: 3px;
+      text-align: center;
+      background-color: silver;
+      position: relative;
+    }
+    /*CSS Configuration of result field in calculator*/
+
+    .calculator{
+      height: max-content;
+      width: max-content;
+      background-color: wheat;
+      border-radius: 5px;
+      position: inherit;
+      align-items: center;
+      display: grid;
+      margin-left: -10px;
+      margin: auto;
+      border: solid 1px black;
+      font-size: larger;
+      transition: all 2s ease-in-out;
+      margin-top: 5%;
+    }
+    /*CSS Configuration of main calculator section*/
+
+    .calculator:hover{
+      scale: 105%;
+    }
+    /*Fancy animation to enlarge calculator on contact with cursor*/
+    
+    .button2{
+      text-align: center;
+      width: 100%;
+      font-size: large;
+    }
+    /*CSS Configuration of items with class .button2, that is, operation buttons (+, -, *, /)*/
+
+    .buttons{
+      position: relative;
+      margin: 0;
+      padding: 0;
+      font-size: large;
+    }
+    /*CSS Configuration of grid (table) with numbers and "." sign*/
+
+    .button-num{
+      width: 100%;
+    }
+    /*CSS Configuration of buttons with numbers*/
+
+    button{
+      font-size: large;
+      transition: all 2s ease-in-out;
+    }
+    /*CSS Configuration for all buttons*/
+
+    button:hover{
+      scale: 90%;
+    }
+    /*Animation to shrink buttons on contact with cursor*/
+
+    button:active{
+      background-color: silver;
+    }
+    /*Change of color when buttons are clicked*/
+
+    .c-button{
+      color: red;
+      text-align: center;
+      width: 100%;
+      font-size: large;
+    }
+    /*CSS Configuration of clear button*/
+
+    .equals-button{
+      text-align: center;
+      width: 100%;
+      font-size: large;
+      transition: all 1s ease-in-out;
+    }
+    /*CSS Configuration of button which gives result*/
+
+    .equals-button:hover{
+      rotate: 180deg;
+      scale: 110%;
+      color: green;
+    }
+    /*Animation of the equals button*/
+
+  </style>
+
+</head>
+<body>
+  <div class="calculator"><!--Main container of the calculator-->
+    <table class="buttons"><!--Table of buttons and result field-->
+    <td colspan="3" class="result-field" id="result"></td><!--Placement of result field-->
+      <tr><!--First row of numbers (1-3)-->
+        <td>
+          <button onclick="
+            calculation += '1';
+            console.log(calculation);
+            result();
+            " class="button-num">1</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '2';
+            console.log(calculation);
+            result();
+            " class="button-num">2</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '3';
+            console.log(calculation);
+            result();
+            " class="button-num">3</button>
+        </td>
+      </tr>
+      <tr><!--Second row of numbers (4-6)-->
+        <td>
+          <button onclick="
+            calculation += '4';
+            console.log(calculation);
+            result();
+            " class="button-num">4</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '5';
+            console.log(calculation);
+            result();
+            " class="button-num">5</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '6';
+            console.log(calculation);
+            result();
+            " class="button-num">6</button>
+        </td>
+      </tr>
+      <tr><!--Third row of numbers (7-9)-->
+        <td>
+          <button onclick="
+            calculation += '7';
+            console.log(calculation);
+            result();
+            " class="button-num">7</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '8';
+            console.log(calculation);
+            result();
+            " class="button-num">8</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '9';
+            console.log(calculation);
+            result();
+            " class="button-num">9</button>
+        </td>
+      </tr>
+      <tr><!--Row with 0-->
+        <td colspan="3">
+          <button onclick="
+            calculation += '0';
+            console.log(calculation);
+            result();
+            " class="button-num">0</button>
+        </td>
+      </tr>
+      <tr><!--Row with '.'-->
+        <td colspan="3">
+          <button onclick="
+            checkCharacter('.','.')
+            console.log(calculation);
+            result()
+            " class="button-num">.</button>
+        </td>
+      </tr>
+      </table>
+      <!--End of table with numbers and beginning of table with operations-->
+      <table>
+      <tr><!--Row with + and - -->
+        <td>
+          <button onclick="
+            calculation += ' + ';
+            console.log(calculation);
+            result();
+            " class="button2">+</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += ' - '
+            console.log(calculation);
+            result();
+            " class="button2">-</button>
+        </td>
+      </tr>
+      <tr><!--Row with * and /-->
+        <td>
+          <button onclick="
+              checkCharacter('/','*');
+              console.log(calculation);
+              result();
+              " class="button2">&#215</button>
+        </td>
+        <td>
+          <button onclick="
+            checkCharacter('*','/');
+            console.log(calculation);
+            result();
+            " class="button2">&#247</button>
+        </td>
+      </tr>
+      <tr><!--Row with = and C (Clear) buttons-->
+        <td>
+          <button onclick="
+            //Handling of dividing by 0 and general errors in syntax
+            try {
+              calculation = eval(calculation).toString();
+              if (calculation=='Infinity') {
+                if (document.documentElement.getAttribute('lang')=='pl') {
+                  calculation='BŁĄD - Dzielenie przez 0';
+                }else{
+                  calculation='ERROR - Division by 0'
+                }
+            }
+            } catch (SyntaxError) {
+                if (document.documentElement.getAttribute('lang'=='pl')) {
+                  alert(`Wewnątrz działania: '${calculation}' jest błąd. Proszę wprowadzić działanie ponownie.`)
+                } else {
+                  alert(`There is an error inside: '${calculation}' operation. Please enter it again.`)
+                }
+                calculation=''
+            }
+            console.log(calculation);
+            result();
+            if (calculation=='undefined') {
+              calculation='';
+            }
+            " class="equals-button">=</button>
+        </td>
+        <td>
+          <button onclick="
+          calculation = '';
+          result()
+          " class="c-button">C</button>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+<!--End of HTML section, and beginning of JavaScript section-->
+  <script>
+    let calculation = '';
+    let languageCode;
+    document.documentElement.setAttribute('lang', navigator.language)
+    //Defining variables and setting language of website (according to user browser)
+
+
+    function result(){/*Function which puts our calculation into result field*/
+    document.getElementById('result').innerText=calculation;
+    console.log(calculation)
+    }
+
+    document.onkeydown = function(e){
+      /*Function which handles keyboard inputs from user, that is:
+      - numbers from keyboard
+      - operations from keyboard
+      - "Enter" or "=" to evaluate operation
+      - "Backspace" to delete previous character
+      - "Shift" + "Backspace" to clear whole result window and calculation variable 
+      */ 
+      
+      if (e.key == '1' || 
+          e.key == '2' || 
+          e.key == '3' || 
+          e.key == '4' || 
+          e.key == '5' || 
+          e.key == '6' || 
+          e.key == '7' || 
+          e.key == '8' || 
+          e.key == '9' ||
+          e.key == '0' ||
+          e.key == '.') {
+        calculation += e.key
+      }/*Section adding numbers to calculation*/
+
+      if (e.key == '=' || e.key == 'Enter'){
+          try {
+            calculation = eval(calculation).toString();
+            if (calculation=='Infinity') {
+              if (document.documentElement.getAttribute('lang')=='pl') {
+                calculation='BŁĄD - Dzielenie przez 0';
+              }else{
+                calculation='ERROR - Division by 0'
+              }
+            }
+          } catch (SyntaxError) {
+            if (document.documentElement.getAttribute('lang'=='pl')) {
+              alert(`Wewnątrz działania: "${calculation}" jest błąd. Proszę poprawić działanie i wprowadzić je ponownie.`)
+            } else {
+              alert(`There is an error inside: ${calculation} operation. Please correct it and enter it again.`)
+            }
+            calculation=''
+            }
+        if (calculation=='undefined') {
+          calculation='';
+        }
+      }/*Section handling evaluation, division by 0 and other general errors*/
+
+      if (e.key == 'Backspace'){
+        if (calculation.toString().slice(-1) == '1' || 
+            calculation.toString().slice(-1) == '2' || 
+            calculation.toString().slice(-1) == '3' || 
+            calculation.toString().slice(-1) == '4' || 
+            calculation.toString().slice(-1) == '5' || 
+            calculation.toString().slice(-1) == '6' || 
+            calculation.toString().slice(-1) == '7' || 
+            calculation.toString().slice(-1) == '8' || 
+            calculation.toString().slice(-1) == '9' ||
+            calculation.toString().slice(-1) == '0') {
+              calculation = calculation.slice(0,-1);
+      }
+      if (calculation.toString().slice(-2,-1) == '+'||
+        calculation.toString().slice(-2,-1) == '-'||
+        calculation.toString().slice(-2,-1) == '*'||
+        calculation.toString().slice(-2,-1) == '/'){
+            calculation = calculation.slice(0,-3)
+      }}/*Section which deletes last character upon pressing "Backspace"*/
+
+      if (e.key == 'Backspace' && e.shiftKey){
+        calculation='';
+      }/*Section clearing result after pressing "Shift" + "Backspace"*/
+
+      if (e.key == '+'||
+      e.key == '-'||
+      e.key == '*'||
+      e.key == '/'){
+        if (calculation.toString().slice(-2,-1)=='*' && e.key=='/'){
+          if (document.documentElement.getAttribute('lang')=='pl') {
+            alert('Nie można wstawić "*" i "/" obok siebie!');
+          }else{
+            alert("You can't put \"*\" and \"/\" alongside each other!");
+          }
+
+        }else if(calculation.toString().slice(-2,-1) == '/' && e.key=='*'){
+          if (document.documentElement.getAttribute('lang')=='pl') {
+            alert('Nie można wstawić "/" i "*" obok siebie!');
+          }else{
+            alert("You can't put \"/\" and \"*\" alongside each other!");
+          }
+
+        }else if(calculation.toString().slice(-2,-1) == '/' && e.key=='/'){
+          if (document.documentElement.getAttribute('lang')=='pl') {
+            alert('Nie można duplikować znaku "/"!');
+          }else{
+            alert("You can't duplicate \"/\" character!");
+          }
+
+        }else if(calculation.toString().slice(-2,-1) == '*' && e.key=='*'){
+          if (document.documentElement.getAttribute('lang')=='pl') {
+            alert('Nie można duplikować znaku "*"!');
+          }else{
+            alert("You can't duplicate \"*\" character!");
+          }
+
+        }else if(calculation=='' && e.key=='/'){
+        if(document.documentElement.getAttribute('lang')=='pl'){
+          alert(`Nie można zacząć działania od znaku "/"!`)
+        }else{
+          alert(`You can't begin an operation with "/"!`)
+        }
+      }else if(calculation=='' && e.key=='*'){
+          if(document.documentElement.getAttribute('lang')=='pl'){
+            alert(`Nie można zacząć działania od znaku "*"!`)
+          }else{
+            alert(`You can't begin an operation with "*"!`)
+          }}else{
+        calculation += ' '+e.key+' ';
+      }}/*Section adding operators and handling some specific common errors*/
+      
+      result();
+    }
+
+    function checkCharacter(charBefore,char) {/*Function handling some common errors, which is used with buttons*/
+      if (calculation.toString().slice(-2,-1)==charBefore){
+          if (document.documentElement.getAttribute('lang')=='pl') {
+            alert(`Nie można wstawić znaku "${charBefore}" i "${char}" obok siebie!`);
+          }else{
+            alert(`You can't put "${charBefore}" and "${char}" alongside each other!`);
+          }
+
+      }else if(calculation.toString().slice(-2,-1) == char){
+          if (document.documentElement.getAttribute('lang')=='pl') {
+            alert(`Nie można duplikować znaku "${char}" !`);
+          }else{
+            alert(`You can't duplicate "${char}" character!`);
+          }
+      
+      }else if(calculation==''){
+        if(document.documentElement.getAttribute('lang')=='pl'){
+          alert(`Nie można zacząć działania od znaku "${char}"!`)
+        }else{
+          alert(`You can't begin an operation with "${char}"!`)
+        }
+
+      }else if(char == '.'){
+        calculation += char;
+
+      }else{
+        calculation += ` ${char} `;
+      }}
+  </script>
+</body>
+</html>
