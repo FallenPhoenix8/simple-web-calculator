@@ -1,0 +1,93 @@
+.result-field{
+	height: 30px;
+	min-width: 130px;
+	width: max-content;
+	font-size: larger;
+	border: solid silver;
+	border-radius: 3px;
+	text-align: center;
+	background-color: silver;
+	position: relative;
+}
+/*CSS Configuration of result field in calculator*/
+
+.calculator{
+	height: max-content;
+	width: max-content;
+	background-color: wheat;
+	border-radius: 5px;
+	position: inherit;
+	align-items: center;
+	display: grid;
+	margin-left: -10px;
+	margin: auto;
+	border: solid 1px black;
+	font-size: larger;
+	transition: all 2s ease-in-out;
+	margin-top: 5%;
+}
+/*CSS Configuration of main calculator section*/
+
+.calculator:hover{
+	scale: 105%;
+}
+/*Fancy animation to enlarge calculator on contact with cursor*/
+
+.button2{
+	text-align: center;
+	width: 100%;
+	font-size: large;
+}
+/*CSS Configuration of items with class .button2, that is, operation buttons (+, -, *, /)*/
+
+.buttons{
+	position: relative;
+	margin: 0;
+	padding: 0;
+	font-size: large;
+}
+/*CSS Configuration of grid (table) with numbers and "." sign*/
+
+.button-num{
+	width: 100%;
+}
+/*CSS Configuration of buttons with numbers*/
+
+button{
+	font-size: large;
+	transition: all 2s ease-in-out;
+}
+/*CSS Configuration for all buttons*/
+
+button:hover{
+	scale: 90%;
+}
+/*Animation to shrink buttons on contact with cursor*/
+
+button:active{
+	background-color: silver;
+}
+/*Change of color when buttons are clicked*/
+
+.c-button{
+	color: red;
+	text-align: center;
+	width: 100%;
+	font-size: large;
+}
+/*CSS Configuration of clear button*/
+
+.equals-button{
+	text-align: center;
+	width: 100%;
+	font-size: large;
+	transition: all 1s ease-in-out;
+}
+/*CSS Configuration of button which gives result*/
+
+.equals-button:hover{
+	rotate: 180deg;
+	scale: 110%;
+	color: green;
+}
+/*Animation of the equals button*/

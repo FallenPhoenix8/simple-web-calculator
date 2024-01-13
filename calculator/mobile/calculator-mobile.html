@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="thefallenphoenix8 (on Discord)">
+  <title>Calculator</title>
+
+  <style></style>
+
+</head>
+<body>
+  <div class="calculator">
+    <table class="buttons">
+    <td colspan="3" class="result-field" id="result"></td>
+      <tr>
+        <td>
+          <button onclick="
+            calculation += '1';
+            console.log(calculation);
+            result();
+            " class="button-num">1</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '2';
+            console.log(calculation);
+            result();
+            " class="button-num">2</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '3';
+            console.log(calculation);
+            result();
+            " class="button-num">3</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button onclick="
+            calculation += '4';
+            console.log(calculation);
+            result();
+            " class="button-num">4</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '5';
+            console.log(calculation);
+            result();
+            " class="button-num">5</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '6';
+            console.log(calculation);
+            result();
+            " class="button-num">6</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button onclick="
+            calculation += '7';
+            console.log(calculation);
+            result();
+            " class="button-num">7</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '8';
+            console.log(calculation);
+            result();
+            " class="button-num">8</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '9';
+            console.log(calculation);
+            result();
+            " class="button-num">9</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <button onclick="
+            calculation += '0';
+            console.log(calculation);
+            result();
+            " class="button-num">0</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <button onclick="
+            checkCharacter('.','.')
+            console.log(calculation);
+            result()
+            " class="button-num">.</button>
+        </td>
+      </tr>
+      </table>
+      <table>
+      <tr>
+        <td>
+          <button onclick="
+            calculation += ' + ';
+            console.log(calculation);
+            result();
+            " class="button2">+</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += ' - '
+            console.log(calculation);
+            result();
+            " class="button2">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button onclick="
+          
+              checkCharacter('/','*');
+              console.log(calculation);
+              result();
+              " class="button2">&#215</button>
+        </td>
+        <td>
+          <button onclick="
+            checkCharacter('*','/');
+            console.log(calculation);
+            result();
+            " class="button2">&#247</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button onclick="
+          try {
+            calculation = eval(calculation).toString();
+            if (calculation=='Infinity') {
+              if (document.documentElement.getAttribute('lang')=='pl') {
+                calculation='BŁĄD - Dzielenie przez 0';
+              }else{
+                calculation='ERROR - Division by 0';
+              }
+            }
+          } catch (SyntaxError) {
+            if (document.documentElement.getAttribute('lang'=='pl')) {
+              alert(`Wewnątrz działania: '${calculation}' jest błąd. Proszę wprowadzić działanie ponownie.`)
+            } else {
+              alert(`There is an error inside: '${calculation}' operation. Please enter it again.`)
+            }
+            calculation=''
+          }
+          
+          console.log(calculation);
+          result();
+          if (calculation=='undefined') {
+            calculation='';
+          }
+          " class="equals-button">=</button>
+        </td>
+        <td>
+          <button onclick="
+          calculation = '';
+          result()
+          " class="c-button">C</button>
+        </td>
+      </tr>
+
+      </table>
+
+  </div>
+
+  <script src="script.js">
+  </script>
+</body>
+</html>

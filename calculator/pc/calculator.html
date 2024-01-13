@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="thefallenphoenix8 (on Discord)">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="calculator"><!--Main container of the calculator-->
+    <table class="buttons"><!--Table of buttons and result field-->
+    <td colspan="3" class="result-field" id="result"></td><!--Placement of result field-->
+      <tr><!--First row of numbers (1-3)-->
+        <td>
+          <button onclick="
+            calculation += '1';
+            console.log(calculation);
+            result();
+            " class="button-num">1</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '2';
+            console.log(calculation);
+            result();
+            " class="button-num">2</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '3';
+            console.log(calculation);
+            result();
+            " class="button-num">3</button>
+        </td>
+      </tr>
+      <tr><!--Second row of numbers (4-6)-->
+        <td>
+          <button onclick="
+            calculation += '4';
+            console.log(calculation);
+            result();
+            " class="button-num">4</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '5';
+            console.log(calculation);
+            result();
+            " class="button-num">5</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '6';
+            console.log(calculation);
+            result();
+            " class="button-num">6</button>
+        </td>
+      </tr>
+      <tr><!--Third row of numbers (7-9)-->
+        <td>
+          <button onclick="
+            calculation += '7';
+            console.log(calculation);
+            result();
+            " class="button-num">7</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '8';
+            console.log(calculation);
+            result();
+            " class="button-num">8</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += '9';
+            console.log(calculation);
+            result();
+            " class="button-num">9</button>
+        </td>
+      </tr>
+      <tr><!--Row with 0-->
+        <td colspan="3">
+          <button onclick="
+            calculation += '0';
+            console.log(calculation);
+            result();
+            " class="button-num">0</button>
+        </td>
+      </tr>
+      <tr><!--Row with '.'-->
+        <td colspan="3">
+          <button onclick="
+            checkCharacter('.','.')
+            console.log(calculation);
+            result()
+            " class="button-num">.</button>
+        </td>
+      </tr>
+      </table>
+      <!--End of table with numbers and beginning of table with operations-->
+      <table>
+      <tr><!--Row with + and - -->
+        <td>
+          <button onclick="
+            calculation += ' + ';
+            console.log(calculation);
+            result();
+            " class="button2">+</button>
+        </td>
+        <td>
+          <button onclick="
+            calculation += ' - '
+            console.log(calculation);
+            result();
+            " class="button2">-</button>
+        </td>
+      </tr>
+      <tr><!--Row with * and /-->
+        <td>
+          <button onclick="
+              checkCharacter('/','*');
+              console.log(calculation);
+              result();
+              " class="button2">&#215</button>
+        </td>
+        <td>
+          <button onclick="
+            checkCharacter('*','/');
+            console.log(calculation);
+            result();
+            " class="button2">&#247</button>
+        </td>
+      </tr>
+      <tr><!--Row with = and C (Clear) buttons-->
+        <td>
+          <button onclick="
+            //Handling of dividing by 0 and general errors in syntax
+            try {
+              calculation = eval(calculation).toString();
+              if (calculation=='Infinity') {
+                if (document.documentElement.getAttribute('lang')=='pl') {
+                  calculation='BŁĄD - Dzielenie przez 0';
+                }else{
+                  calculation='ERROR - Division by 0'
+                }
+            }
+            } catch (SyntaxError) {
+                if (document.documentElement.getAttribute('lang'=='pl')) {
+                  alert(`Wewnątrz działania: '${calculation}' jest błąd. Proszę wprowadzić działanie ponownie.`)
+                } else {
+                  alert(`There is an error inside: '${calculation}' operation. Please enter it again.`)
+                }
+                calculation=''
+            }
+            console.log(calculation);
+            result();
+            if (calculation=='undefined') {
+              calculation='';
+            }
+            " class="equals-button">=</button>
+        </td>
+        <td>
+          <button onclick="
+          calculation = '';
+          result()
+          " class="c-button">C</button>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+<!--End of HTML section, and beginning of JavaScript section-->
+  <script src="keyboard-input+result.js">
+    
+  </script>
+</body>
+</html>

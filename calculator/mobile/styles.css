@@ -1,0 +1,63 @@
+body{
+	background-color: wheat;
+}
+
+.result-field{
+	height: 35px;
+	min-width: 130px;
+	width: max-content;
+	font-size: larger;
+	border: solid silver;
+	border-radius: 3px;
+	text-align: center;
+	background-color: silver;
+	position: relative;
+}
+.calculator{
+	height: 100%;
+	width: 100%;
+	background-color: wheat;
+	border-radius: 5px;
+	position: inherit;
+	align-items: center;
+	display: grid;
+	margin-left: -10px;
+	margin: auto;
+	border: solid 1px black;
+	font-size: larger;
+	transition: all 2s ease-in-out;
+	margin-top: 5%;
+}
+
+.button2{
+	text-align: center;
+	width: 100%;
+	font-size: large;
+}
+.buttons{
+	position: relative;
+	margin: 0;
+	padding: 0;
+	font-size: large;
+}
+.button-num{
+	width: 100%;
+}
+button{
+	font-size: large;
+	transition: all 2s ease-in-out;
+	height: 45px;
+}
+
+.c-button{
+	color: red;
+	text-align: center;
+	width: 100%;
+	font-size: large;
+}
+.equals-button{
+	text-align: center;
+	width: 100%;
+	font-size: large;
+	transition: all 1s ease-in-out;
+}
